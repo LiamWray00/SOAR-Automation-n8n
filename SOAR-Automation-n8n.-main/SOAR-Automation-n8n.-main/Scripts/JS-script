@@ -1,5 +1,0 @@
-// extract-ip.js
-const text = $json.body.text;
-const match = text.match(/rhost=(\d+\.\d+\.\d+\.\d+)/);
-const srcip = match ? match[1] : null;
-return [{ json: { srcip } }];
