@@ -17,7 +17,7 @@ n8n Automation (self-hosted on same Ubuntu VM)
    │  VirusTotal lookup
    │  Claude AI triage summary
    ▼
-Email Alert — plain English analyst report
+Email Alert — readable analyst report
 ```
  
 ## Highlights
