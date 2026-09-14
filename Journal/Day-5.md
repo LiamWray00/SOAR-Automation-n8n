@@ -1,6 +1,6 @@
 # Day 5 — Full Pipeline: IP Extraction, VirusTotal & Email Alert
 **Date:** September 11, 2026
-**Environment:** Ubuntu Server 24.04 VM | Windows Laptop | Separate laptop (attacker)
+**Environment:** Ubuntu Server 24.04 VM | Windows Laptop | Separate laptop (Linux attacker)
 
 ---
 
@@ -13,11 +13,11 @@
 ---
 
 ## Journal
-Final day completing the full automated triage pipeline. Added a JavaScript Code node to extract the source IP from the Wazuh alert's `text` field using regex on the `rhost=` pattern. Initial code crashed on alerts without an IP — fixed by adding a null check that stops the workflow early for non-network alerts that don't contain a source IP.
+Final day completing the full automated triage pipeline. Added a JavaScript Code node to extract the source IP from the Wazuh alert's `text` field using regex on the `rhost=` pattern. Initial code crashed on alerts without an IP and was fixed by adding a null check that stops the workflow early for non-network alerts that don't contain a source IP.
 
-Added VirusTotal HTTP Request node after AbuseIPDB using the free VirusTotal API. Added Send Email as the final node with an HTML formatted triage report pulling fields from the Webhook, Code, and AbuseIPDB nodes.
+Added VirusTotal HTTP Request node after AbuseIPDB using the free VirusTotal API. Added Send Email as the final node with an HTML-formatted triage report pulling fields from the Webhook, Code, and AbuseIPDB nodes.
 
-Tested end to end by running SSH failed logins from a separate laptop targeting the Ubuntu VM. Full pipeline ran in 2.9 seconds — Wazuh detected the brute force, webhook fired to n8n, IP extracted, AbuseIPDB queried, VirusTotal queried, triage email received with complete alert details.
+Tested end-to-end by running SSH failed logins from a separate laptop targeting the Ubuntu VM. The full pipeline ran in 2.9 seconds, and Wazuh detected the brute force, the webhook fired to n8n, IP extracted, AbuseIPDB queried, VirusTotal queried, triage email was received with complete alert details.
 
 ---
 
@@ -65,7 +65,7 @@ return [{ json: { srcip } }];
 | Issue | Fix |
 |---|---|
 | Code node crashed on alerts without source IP | Added null check — `return []` when no IP found stops workflow early |
-| VirusTotal node "Referenced node doesn't exist" | Node named "Code in JavaScript" not "Code" — updated expression |
+| VirusTotal node "Referenced node doesn't exist" | Node named "Code in JavaScript" not "Code" = updated expression |
 
 ---
 
@@ -83,7 +83,7 @@ return [{ json: { srcip } }];
 ---
 
 ## Key Takeaways
-- Always handle null cases in Code nodes — not every Wazuh alert contains a source IP
-- Node names in n8n expressions must match exactly — "Code in JavaScript" vs "Code" breaks the workflow
+- Always handle null cases in Code nodes; not every Wazuh alert contains a source IP
+- Node names in n8n expressions must match exactly to "Code in JavaScript" vs "Code" because it breaks the workflow
 - Full pipeline runs in under 3 seconds from Wazuh detection to email delivery
-- Private internal IPs return score 0 from AbuseIPDB — this is correct behavior not a failure
+- Private internal IPs return score 0 from AbuseIPDB; this signals correct behavior, not a failure
