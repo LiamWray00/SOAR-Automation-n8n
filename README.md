@@ -1,4 +1,4 @@
-# SOAR Automation Lab — Wazuh + n8n + AI Triage
+# SOAR Automation Lab with Wazuh + n8n workflow + AI Triage
 
 Hello! This is my hands-on home lab building a SOAR (Security Orchestration, Automation and Response) pipeline. I deployed Wazuh as a self-hosted SIEM, connected a Windows endpoint as an agent, and built an n8n automation workflow that ingests Wazuh alerts, enriches them with AbuseIPDB and VirusTotal threat intelligence, uses AI to summarize findings, and emails an in-depth triage report.
 
