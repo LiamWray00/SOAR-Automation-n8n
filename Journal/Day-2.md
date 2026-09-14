@@ -61,8 +61,8 @@ Within minutes of connecting, Wazuh automatically detected and mapped a real eve
 ## Screenshots
 ![ ](../Screenshots/events-wazuh.png)
 
-### - Wazuh MITRE ATT&CK Events tab showing T1562.001 (Defense Evasion) 
-### - "Wazuh agent stopped" — firing on Sep 5 at 18:04, rule level 3, rule ID 506.
+- Wazuh MITRE ATT&CK Events tab showing T1562.001 (Defense Evasion) 
+- "Wazuh agent stopped" — firing on Sep 5 at 18:04, rule level 3, rule ID 506.
 ---
 
 ## Key Takeaways
