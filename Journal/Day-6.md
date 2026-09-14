@@ -12,11 +12,11 @@
 ---
 
 ## Journal
-Final addition to the pipeline — an AI summarization node using the Anthropic Claude API. Added an HTTP Request node calling the Claude API between the VirusTotal lookup and the Send Email node. The node takes all enrichment data from AbuseIPDB, VirusTotal, and the Wazuh alert itself and prompts Claude to write a 3-4 sentence SOC analyst triage summary focused on risk level and recommended action.
+The final addition to the pipeline was an AI summarization node using the Anthropic Claude API. Then added an HTTP Request node calling the Claude API between the VirusTotal lookup and the Send Email node. The node takes all enrichment data from AbuseIPDB, VirusTotal, and the Wazuh alert itself and prompts Claude to write a 3-4 sentence SOC analyst triage summary focused on risk level and recommended action.
 
 Updated the email HTML body to include the AI summary at the top of the triage report so the analyst sees the plain English summary before the raw data.
 
-Tested end to end with SSH brute force simulation from a separate laptop. Full pipeline fired — Wazuh detected, webhook triggered n8n, IP extracted, AbuseIPDB queried, VirusTotal queried, Claude generated a triage summary, email delivered with AI summary included.
+Tested end-to-end with an SSH brute-force simulation from a separate laptop. Full pipeline fired — Wazuh detected, webhook triggered n8n, IP extracted, AbuseIPDB queried, VirusTotal queried, Claude generated a triage summary, email delivered with AI summary included.
 
 ---
 
@@ -72,6 +72,6 @@ Alert data: IP, Rule, MITRE technique, Tactic, AbuseIPDB Score, ISP, Is Tor, Tot
 
 ## Key Takeaways
 - Claude API requires `anthropic-version` header on every request
-- AI summary node must be placed inline between enrichment and email — not as a branch
+- AI summary node must be placed inline between enrichment and email; not as a separate branch
 - AI-generated triage report converts raw JSON threat data into actionable analyst language automatically
-- Full pipeline now runs end to end in under 3 seconds with zero manual analyst input
+- Full pipeline now runs end-to-end in under 3 seconds with zero manual analyst input
