@@ -12,11 +12,11 @@
 ---
 
 ## Journal
-Installed n8n via Docker on the same Ubuntu VM running Wazuh. Initial npm install attempt got stuck for 15+ minutes — switched to Docker which was faster and cleaner. First Docker run used `--rm` flag which deleted container data on stop — lost the first workflow build. Fixed by switching to a persistent volume command with `--restart unless-stopped` so n8n survives reboots and power outages automatically.
+Installed n8n via Docker on the same Ubuntu VM running Wazuh. The initial npm install attempt got stuck for 15+ minutes, so I switched to Docker, which was faster and cleaner. First Docker run used `--rm` flag which deleted container data on stop, and I lost the first workflow build. Fixed by switching to a persistent volume command with `--restart unless-stopped` so n8n survives reboots and power outages automatically.
 
-Built the first workflow — a form-based IP reputation checker. Analyst submits a suspicious IP through a web form, n8n automatically queries AbuseIPDB and returns full threat intelligence. Added an IF node to split results into malicious (score > 50) and clean paths, each sending a formatted email via Gmail SMTP.
+Built the first workflow as a form-based IP reputation checker. An analyst submits a suspicious IP through a web form; n8n automatically queries AbuseIPDB and returns full threat intelligence. Added an IF node to split results into malicious (score > 50) and clean paths, each sending a formatted email via Gmail SMTP.
 
-Tested with two real IPs — 8.8.8.8 (Google DNS, clean) and 185.220.101.34 (known Tor exit node, malicious). Both correctly routed to the right email path.
+Tested with two real IPs — 8.8.8.8 (Google DNS, clean) and 185.220.101.34 (known Tor exit node, malicious). Both are correctly routed to the right email path.
 
 ---
 
@@ -90,7 +90,7 @@ sudo docker run -d --name n8n --restart unless-stopped \
 ---
 
 ## Key Takeaways
-- Always use a persistent Docker volume — `--rm` deletes everything on stop
+- Always use a persistent Docker volume like `--rm` because it deletes everything on stop
 - `--restart unless-stopped` handles power outages and unclean shutdowns automatically
 - AbuseIPDB correctly identified a Tor exit node with score 100 vs Google DNS at score 0
 - SMTP is simpler than OAuth for local self-hosted n8n
