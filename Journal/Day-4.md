@@ -51,7 +51,7 @@ Location: `/var/ossec/etc/ossec.conf` — must be placed inside the `</ossec_con
 - n8n Executions tab showing seven successful webhook executions from Sep 6 between 17:54 and 18:01, confirming Wazuh is sending alerts to n8n automatically.
 
 ![ ](../Screenshots/log-success.png)
-- n8n execution detail for Sep 6 at 18:01:27 — single Webhook node run in 23ms showing a Wazuh "Agent stopped" alert (rule_id 506, agent Boognish) received successfully at the production webhook URL.
+- The single Webhook node ran in 23ms, showing a Wazuh "Agent stopped" alert (rule_id 506, agent Boognish) received successfully at the production webhook URL.
 
 ---
 
