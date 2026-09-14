@@ -12,7 +12,7 @@
 ---
 
 ## Journal
-Configured Wazuh's ossec.conf to forward alerts to n8n via webhook. Two critical config issues hit back to back — the integration block was placed after the closing `</ossec_config>` tag which broke XML parsing and crashed the manager, and the integration name `custom-webhook` isn't recognized by Wazuh — changed to `shuffle` which is a supported name for custom webhooks.
+Configured Wazuh's ossec.conf to forward alerts to n8n via webhook. Two critical config issues hit back-to-back. The integration block was placed after the closing `</ossec_config>` tag which broke XML parsing and crashed the manager, and the integration name `custom-webhook` isn't recognized by Wazuh so it had to be changed to `shuffle` which is a supported name for custom webhooks.
 
 Initial alert level threshold of 3 flooded n8n with hundreds of executions per minute. Raised to 7 to filter to meaningful security alerts only.
 
@@ -39,7 +39,7 @@ Location: `/var/ossec/etc/ossec.conf` — must be placed inside the `</ossec_con
 | Issue | Fix |
 |---|---|
 | Wazuh manager crashed after config edit | Integration block placed after `</ossec_config>` — moved inside |
-| n8n not receiving alerts | Integration name `custom-webhook` not recognized — changed to `shuffle` |
+| n8n not receiving alerts | Integration name `custom-webhook` not recognized and changed to `shuffle` |
 | n8n flooded with executions per minute | Alert level raised from 3 to 7 |
 | Workflow using test URL not production | Published workflow — switches from `/webhook-test/` to `/webhook/` |
 
@@ -56,7 +56,7 @@ Location: `/var/ossec/etc/ossec.conf` — must be placed inside the `</ossec_con
 ---
 
 ## Key Takeaways
-- XML config errors crash Wazuh immediately — always verify closing tag placement
+- XML config errors crash Wazuh immediately, remember to always verify closing tag placement
 - `shuffle` is required as the integration name for custom webhooks in Wazuh
 - Alert level 7 filters noise while keeping meaningful security detections
 - Webhook fires in under 1 second from Wazuh detection to n8n execution
