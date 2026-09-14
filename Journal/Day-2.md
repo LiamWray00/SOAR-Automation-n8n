@@ -45,7 +45,7 @@ Within minutes of connecting, Wazuh automatically detected and mapped a real eve
 | Rule Level | 3 |
 | Timestamp | 2026-09-05 18:04:00 |
 
-**What happened:** When the Wazuh agent service was stopped during troubleshooting, Wazuh flagged it as a potential Defense Evasion attempt. This is correct behavior — stopping security tooling is a real attacker technique used to blind defenders before executing malicious actions.
+**What happened:** When the Wazuh agent service was stopped during troubleshooting, Wazuh flagged it as a potential Defense Evasion attempt. This is correct behavior. Stopping security tooling is a real attacker technique used to blind defenders before executing malicious actions.
 
 ---
 
@@ -66,6 +66,6 @@ Within minutes of connecting, Wazuh automatically detected and mapped a real eve
 ---
 
 ## Key Takeaways
-- Real endpoints generate real detections immediately — no configuration needed for basic MITRE ATT&CK mapping
+- Real endpoints generate real detections immediately with no configuration needed for basic MITRE ATT&CK mapping
 - Wazuh monitors its own agent health and maps operational events to ATT&CK techniques
-- The GUI installer is more reliable than silent MSI install for the Wazuh Windows agent
+- The GUI installer is more reliable than a silent MSI install for the Wazuh Windows agent
