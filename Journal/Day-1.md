@@ -12,11 +12,11 @@
 ---
 
 ## Journal
-First day focused on getting Wazuh running on the Ubuntu VM. Used the official one-line Wazuh install script which installs the full stack — manager, indexer, and dashboard — automatically.
+First day focused on getting Wazuh running on the Ubuntu VM. Used the official one-line Wazuh install script which installs the full stack which included manager, indexer, and dashboard — automatically.
 
 Ubuntu 24.04 is not officially supported by Wazuh 4.7 so the install script threw a version check error. Fixed by passing the `-i` flag to ignore the check. Install completed successfully despite the warning.
 
-After install the dashboard wasn't loading in the browser. Diagnosed the issue as a certificate filename mismatch — the config file referenced `dashboard-key.pem` and `dashboard.pem` but the actual cert files were named `wazuh-dashboard-key.pem` and `wazuh-dashboard.pem`. Fixed by updating the config with sed commands to match the actual filenames. Dashboard loaded after restarting the service.
+After the install the dashboard wasn't loading in the browser. Diagnosed the issue as a certificate filename mismatch — the config file referenced `dashboard-key.pem` and `dashboard.pem` but the actual cert files were named `wazuh-dashboard-key.pem` and `wazuh-dashboard.pem`. I fixed by updating the config with sed commands to match the actual filenames. Dashboard finally loaded after restarting the service.
 
 ---
 
