@@ -22,12 +22,12 @@ Email Alert — readable analyst report
  
 ## Highlights
  
-- **Deployed Wazuh on Ubuntu Server** hosted on Proxmox — full self-hosted SIEM with no cloud dependency
+- **Deployed Wazuh on Ubuntu Server** hosted on Proxmox with a full self-hosted SIEM
 - **Connected a real Windows 11 endpoint** as a Wazuh agent, generating live security events
 - **Auto-detected MITRE ATT&CK T1562.001 and T1110** (Defense Evasion, Credential Access) with zero manual configuration
-- **Built a webhook integration** from Wazuh to n8n — alerts flow automatically in under 1 second
+- **Built a webhook integration** from Wazuh to n8n the alerts flow automatically in under 1 second
 - **Queried AbuseIPDB and VirusTotal** for multi-source IP threat intelligence
-- **Added Claude AI summarization** to convert raw JSON threat data into plain English triage reports
+- **Added Claude AI summarization** to convert raw JSON threat data into readable triage reports
 - **Full pipeline runs in under 3 seconds** from Wazuh detection to email delivery
 ## What this demonstrates
  
@@ -70,6 +70,7 @@ See `/workflows` for exported n8n workflow JSON files:
 | AI | Claude Sonnet (Anthropic API) |
 | Notification | Gmail SMTP |
 | Host OS | Ubuntu Server 24.04 |
+| Attacker | Windows Laptop with Ubuntu OS |
  
 ## Author
 Liam Wray | [LinkedIn](http://www.linkedin.com/in/liam-wray-9002373a6) | [GitHub](https://github.com/LiamWray00)
