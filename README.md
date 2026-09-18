@@ -35,12 +35,12 @@ Email Alert — readable analyst report
 - Real endpoint agent deployment and management
 - Webhook-based alert forwarding and automation
 - Multi-source threat intelligence integration
-- AI-assisted alert triage
+- AI-assisted alert triage with Claude
 - SOAR pipeline design and implementation
 ## Lessons Learned
  
 - Wazuh's integration block must be placed inside `</ossec_config>` — placement after it breaks XML parsing and crashes the manager
-- Docker containers need a persistent volume (`-v n8n_data`) and `--restart unless-stopped` or data is lost on unclean shutdown
+- Docker containers need a persistent volume (`-v n8n_data`) and `--restart unless-stopped` or data is lost on an unclean shutdown
 - Wazuh's default alert level of 3 floods n8n — raising to 7 filters to meaningful security alerts only
 - `shuffle` is required as the integration name for custom webhooks in Wazuh — `custom-webhook` is not recognized
 - Source IPs from SSH brute force appear in the `text` field as `rhost=x.x.x.x` and require regex extraction
